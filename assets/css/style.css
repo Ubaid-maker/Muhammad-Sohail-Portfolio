@@ -197,6 +197,18 @@ a{ color:inherit; }
 .btn-signal:hover{ background:var(--white); }
 .btn-ghost{ border-color:rgba(255,255,255,.45); color:var(--white); }
 .btn-ghost:hover{ border-color:var(--signal); color:var(--signal); }
+.btn-video{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  background:rgba(242,183,5,.12);
+  border-color:var(--signal);
+  color:var(--signal);
+}
+.btn-video:hover{
+  background:var(--signal);
+  color:var(--ink);
+  border-color:var(--signal);
+}
+.btn-icon{ flex-shrink:0; }
 
 /* =========================================================
    STATEMENT
@@ -240,6 +252,19 @@ a{ color:inherit; }
   font-size:.98rem;
 }
 .cap-note{ margin:0; color:var(--dim); max-width:34ch; }
+.cap-drive-link{
+  display:inline-block;
+  color:var(--ink);
+  font-variation-settings:'wdth' 96,'wght' 700;
+  text-decoration:underline;
+  text-decoration-color:var(--signal);
+  text-underline-offset:3px;
+  transition:color .15s ease, text-decoration-color .15s ease;
+}
+.cap-drive-link:hover{
+  color:#000;
+  text-decoration-color:var(--ink);
+}
 
 /* =========================================================
    INDEX BAR
@@ -287,6 +312,24 @@ a{ color:inherit; }
 .chip[aria-pressed="true"]{
   background:var(--signal); border-color:var(--signal); color:var(--ink);
   font-variation-settings:'wdth' 96,'wght' 700;
+}
+.index-vault-link{
+  margin-left:auto;
+  flex:none;
+  display:inline-flex; align-items:center; gap:.45rem;
+  background:rgba(242,183,5,.14);
+  border:1px solid var(--signal);
+  color:var(--signal);
+  font-size:.84rem;
+  font-variation-settings:'wdth' 96,'wght' 600;
+  padding:.42rem .95rem;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.index-vault-link:hover{
+  background:var(--signal);
+  color:var(--ink);
 }
 
 /* =========================================================
@@ -372,6 +415,143 @@ a{ color:inherit; }
 .tile:focus-visible .tile-cap{ opacity:1; transform:none; }
 
 .empty{ padding:4rem 0; color:var(--dim); }
+
+/* =========================================================
+   VIDEO VAULT
+   ========================================================= */
+.video-vault{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:clamp(3rem,8vh,6rem) var(--shell);
+}
+
+.video-vault-card{
+  background:var(--ink);
+  color:var(--white);
+  padding:clamp(2rem,5vw,3.75rem);
+  border-left:4px solid var(--signal);
+  position:relative;
+  overflow:hidden;
+  background-image:radial-gradient(circle at 90% 12%, rgba(242,183,5,.14) 0%, transparent 48%);
+}
+
+.video-vault-topbar{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:1rem; margin-bottom:2rem; padding-bottom:1.25rem;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+
+.vault-badge{
+  display:inline-flex; align-items:center; gap:.6rem;
+  color:var(--signal);
+  font-size:.82rem;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  font-variation-settings:'wdth' 96,'wght' 700;
+}
+
+.vault-pulse{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--signal);
+  box-shadow:0 0 0 0 rgba(242,183,5,.7);
+  animation:vaultPulse 2s infinite;
+}
+
+@keyframes vaultPulse{
+  0%{ box-shadow:0 0 0 0 rgba(242,183,5,.7); }
+  70%{ box-shadow:0 0 0 8px rgba(242,183,5,0); }
+  100%{ box-shadow:0 0 0 0 rgba(242,183,5,0); }
+}
+
+.vault-status-chip{
+  color:#9C988E;
+  font-size:.82rem;
+  font-variation-settings:'wdth' 100,'wght' 500;
+}
+
+.video-vault-body{
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  gap:clamp(2rem,5vw,4.5rem);
+  align-items:center;
+}
+
+.vault-kicker{
+  color:var(--signal);
+  font-size:.86rem;
+  font-variation-settings:'wdth' 100,'wght' 600;
+  margin:0 0 .75rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.video-vault-title{
+  margin:0 0 1rem;
+  font-variation-settings:'wdth' 74,'wght' 800;
+  font-size:clamp(1.8rem,1.2rem + 2.5vw,3.2rem);
+  line-height:1.04;
+  letter-spacing:-.015em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+
+.video-vault-desc{
+  color:#CFCCC4;
+  font-size:clamp(.95rem,.9rem + .25vw,1.08rem);
+  line-height:1.6;
+  margin:0 0 1.75rem;
+  max-width:56ch;
+}
+
+.video-vault-tags{
+  display:flex; flex-wrap:wrap; gap:.5rem;
+}
+
+.v-tag{
+  display:inline-block;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);
+  color:#E8E6E0;
+  font-size:.8rem;
+  padding:.35rem .75rem;
+  font-variation-settings:'wdth' 96,'wght' 500;
+}
+
+.video-vault-action-box{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.14);
+  padding:clamp(1.5rem,3vw,2.25rem);
+  display:flex; flex-direction:column; gap:1.1rem;
+  text-align:center;
+}
+
+.vault-metric b{
+  display:block;
+  color:var(--signal);
+  font-variation-settings:'wdth' 78,'wght' 800;
+  font-size:2.2rem; line-height:1;
+}
+
+.vault-metric span{
+  display:block;
+  margin-top:.35rem;
+  color:#9C988E;
+  font-size:.82rem;
+}
+
+.btn-vault{
+  display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+  padding:1.05rem 1.75rem;
+  font-size:1.02rem;
+  cursor:pointer;
+}
+
+.vault-subtext{
+  margin:0;
+  color:#78746C;
+  font-size:.78rem;
+  line-height:1.4;
+}
 
 /* =========================================================
    HISTORY
@@ -522,6 +702,7 @@ a{ color:inherit; }
   .brand{ grid-template-columns:1fr; }
   .brand-meta{ position:static; max-width:46rem; }
   .contact-inner{ grid-template-columns:minmax(0,10rem) minmax(0,1fr); }
+  .video-vault-body{ grid-template-columns:1fr; gap:2.5rem; }
 }
 
 @media (max-width: 760px){
@@ -529,6 +710,9 @@ a{ color:inherit; }
   .wall-col{ gap:.7rem; }
   .ledger-cell{ padding-right:1.25rem; margin-right:1.25rem; }
   .ledger-cell b{ font-size:1.6rem; }
+  .index-inner{ flex-wrap:wrap; gap:.75rem; }
+  .index-vault-link{ margin-left:0; width:100%; justify-content:center; }
+  .video-vault{ padding:clamp(2.5rem,6vh,4rem) var(--shell); }
   .role{ grid-template-columns:1fr; gap:.35rem; }
   .contact-inner{ grid-template-columns:1fr; }
   .portrait{ width:8.5rem; }
